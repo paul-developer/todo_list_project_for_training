@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome</title>
+    <script src="ui_lib/jquery.min.js"></script>
+    <script src="ui_lib/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="ui_lib/jquery-ui.min.css">
+    <link rel="stylesheet" href="ui_lib/jquery-ui.theme.min.css">
+
+    <script src="js/login.js"></script>
+    <link rel="stylesheet" href="css/login.css">
+  </head>
+  <body>
+    <div class="login_form">
+      <input class="text_input" type="text" placeholder="Login" name="user_name" value="" autocomplete="off" title="Enter username">
+      <input class="text_input" type="password" placeholder="Password" name="password" value="" title="Enter password">
+      <input class="submit_button" type="button" name="" value="Login">
+    </div>
+    <div class="alert alert_info ui-widget">
+      <div class="alert_inner ui-state-highlight ui-corner-all">
+        <p>
+          <span class="ui-icon ui-icon-info"></span>
+          <span class="alert_span"></span>
+        </p>
+      </div>
+    </div>
+    <div class="alert alert_error ui-widget">
+      <div class="alert_inner ui-state-error ui-corner-all">
+        <p>
+          <span class="ui-icon ui-icon-info"></span>
+          <span class="alert_span"></span>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

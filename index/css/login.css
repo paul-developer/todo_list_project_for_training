@@ -1,0 +1,50 @@
+body {
+  background-color: #E3E5E7;
+  font-family: sans-serif;
+}
+
+.login_form {
+  width: 350px;
+  height: 200px;
+  border-radius: 10px;
+  background-color: #4981B9;
+  margin: 100px auto;
+  padding-top: 20px;
+}
+
+input {
+  display: block;
+  margin: 20px auto;
+  height: 25px;
+}
+
+.text_input {
+  width: 250px;
+}
+
+.submit_button {
+  width: 70px;
+  height: 30px;
+}
+
+.alert {
+  position: fixed;
+  min-width: 500px;
+  top: 10px;
+  left: 50%;
+  transform: translate(-50%);
+  display: none;
+}
+
+.alert_inner {
+  padding: 0 10px;
+}
+
+.alert_span {
+  font-weight: bold;
+}
+
+.ui_tooltip_custom_content_style {
+  color: orange;
+  font-weight: bold;
+}

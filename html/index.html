@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>TODO List</title>
+    <script src="ui_lib/jquery.min.js"></script>
+    <script src="ui_lib/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="ui_lib/jquery-ui.min.css">
+    <link rel="stylesheet" href="ui_lib/jquery-ui.theme.min.css">
+
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <div class="header">
+      <div class="header_element">
+        <span class="user_name"><TMPL_VAR NAME="USER_NAME"></span>
+        <span>&nbsp;|&nbsp;</span>
+        <a class="header_logout" href="?run=logout_go">Logout</a></span>
+      </div>
+    </div>
+
+    <div class="alert alert_info ui-widget">
+      <div class="alert_inner ui-state-highlight ui-corner-all">
+        <div class="alert_icon">
+          <span class="ui-icon ui-icon-info"></span>
+        </div>
+        <div class="alert_content">
+            <span class="alert_span"></span>
+        </div>
+        <div class="alert_close_div">
+          <span class="alert_close_button ui-icon ui-icon-closethick" title="Close message"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert_error ui-widget">
+      <div class="alert_inner ui-state-error ui-corner-all">
+        <div class="alert_icon">
+          <span class="ui-icon ui-icon-alert"></span>
+        </div>
+        <div class="alert_content">
+            <span class="alert_span"></span>
+        </div>
+        <div class="alert_close_div">
+          <span class="alert_close_button ui-icon ui-icon-closethick" title="Close message"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="taskel_selected_del ui-widget">
+      <div class="ui-state-highlight ui-corner-all">
+        <div class="taskel_selected_del_close" title="Reset selection">&#128938;</div>
+        <p>Selected tasks to delete: <span class="taskel_selected_del_count"></span></p>
+        <input type="button" class="taskel_selected_del_button" value="Delete">
+      </div>
+    </div>
+    <div class="tdl_add_btn_div">
+      <button class="tdl_add_btn"><div class="tdl_add_btn_plus">&#128935;</div> Add TODO List</button>
+    </div>
+    <div class="todo_lists_root">
+      <div class="tdl_load">
+        Loading...
+      </div>
+    </div>
+
+    <div class="templates_storage">
+
+      <div class="login_expired_msg" title="Login session has expired">
+        <h2>Your login session has expired</h2>
+        <p>Please refresh this page for to open the login page</p>
+        <p>Also you can to close this message for copy your unsaved data</p>
+      </div>
+
+      <div class="add_tdl_form" title="Create new TODO List">
+          <input type="text" value="" class="add_tdl_form_input" placeholder="TODO List name" title="Enter name for the TODO List" autocomplete="off">
+      </div>
+
+      <div class="edit_tdl_form" title="Edit TODO List">
+          <input type="text" value="" class="edit_tdl_form_input" placeholder="TODO List name" title="Enter name for the TODO List" autocomplete="off">
+      </div>
+
+      <div class="del_tdl_confirm" title="TODO List deletion confirmation">
+        <div>
+          <p class="del_tdl_msg">TODO List: <span class="del_tdl_name"></span></p>
+          <p class="del_tdl_msg">Are you sure want to delete this TODO List <span class="del_tdl_warn">and all its tasks</span>?</p>
+        </div>
+      </div>
+
+      <div class="to_do_list">
+        <div class="tdl_header">
+          <div class="tdl_header_icon">&#128197;</div>
+          <div class="tdl_name"></div>
+          <div class="tdl_header_icon tdl_move">&#8661;</div>
+          <div>|</div>
+          <div class="tdl_header_icon tdl_edit">&#128393;</div>
+          <div>|</div>
+          <div class="tdl_header_icon tdl_delete">&#128465;</div>
+        </div>
+        <div class="add_task_place">
+          <div class="add_task_icon_plus">&#128935;</div>
+          <div class="add_task_field_div">
+            <textarea class="add_task_field" rows="1" placeholder="Start typing here to create a task..."></textarea>
+          </div>
+          <div class="add_task_btn_div">
+            <input type="button" class="add_task_btn" value="Add Task">
+          </div>
+        </div>
+        <div class="tdl_tasks_root">
+          <div class="taskel_load">Loading...</div>
+        </div>
+      </div>
+
+      <div class="task_element">
+        <div class="taskel_selector_div">
+          <input type="checkbox" class="taskel_done_selector">
+        </div>
+        <div class="taskel_space_div"></div>
+        <div class="taskel_content_div">
+          <div class="taskel_info_manage_div">
+            <div class="taskel_datetime">
+              <div>Created: <span class="taskel_created_val"></span></div>
+              <div class="taskel_do_before_div">Do before: <span class="taskel_do_before_val"></span></div>
+            </div>
+            <div class="taskel_manage_div">
+              <div>
+                <div class="taskel_manage taskel_move">&#8661;</div>
+                <div class="taskel_manage taskel_edit">&#128393;</div>
+                <div class="taskel_manage taskel_delete">&#128465;</div>
+                <input type="checkbox" class="taskel_del_selector">
+              </div>
+            </div>
+          </div>
+          <span class="taskel_content"></span>
+        </div>
+      </div>
+
+      <div class="adtsk_form" title="Create new task">
+        <p class="adtsk_msg">TODO List: <span class="adtsk_tdl_name"></span></p>
+        <textarea name="content" class="adtsk_form_input" placeholder="Task description" title="Enter the description for the task" autocomplete="off"></textarea>
+        <div>
+          <span class="adtsk_msg">Do before: </span>
+          <input type="checkbox" class="adtsk_do_before_allow">
+          <input type="date" name="date" class="adtsk_do_before_date" title="Incorrect value">
+          <input type="time" name="time" class="adtsk_do_before_time" title="Incorrect value">
+        </div>
+      </div>
+
+      <div class="edtsk_form" title="Edit task">
+        <p class="edtsk_msg">TODO List: <span class="edtsk_tdl_name"></span></p>
+        <textarea name="content" class="edtsk_form_input" placeholder="Task description" title="Enter the description for the task" autocomplete="off"></textarea>
+        <div>
+          <span class="edtsk_msg">Do before: </span>
+          <input type="checkbox" class="edtsk_do_before_allow">
+          <input type="date" name="date" class="edtsk_do_before_date" title="Incorrect value">
+          <input type="time" name="time" class="edtsk_do_before_time" title="Incorrect value">
+        </div>
+      </div>
+
+      <div class="del_many_task_confirm" title="Tasks deletion confirmation">
+        <div>
+          <p class="del_task_msg">Selected tasks quantity: <span class="del_task_quantity"></span></p>
+          <p class="del_task_msg">Are you sure want to delete selected task(s)?</p>
+        </div>
+      </div>
+
+      <div class="del_task_confirm" title="Task deletion confirmation">
+        <div>
+          <p class="del_task_msg">TODO List: <span class="del_task_tdl_name"></span></p>
+          <p class="del_task_msg">Task: <span class="del_task_content"></span></p>
+          <p class="del_task_msg">Are you sure want to delete this task?</p>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
