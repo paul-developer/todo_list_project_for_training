@@ -326,7 +326,7 @@ sub tasklist_add_run {
 
   my $new_task = $dbh->selectrow_hashref(
     q[SELECT
-        id, content, created, do_before,
+        id, content, created, do_before, done,
         CASE
           WHEN do_before > (NOW() + INTERVAL '1 DAY') THEN 'no'
           WHEN do_before > NOW() THEN 'soon'
